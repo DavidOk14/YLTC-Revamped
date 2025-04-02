@@ -1,6 +1,6 @@
-Hello everyone!!
+__**Hello everyone!!**__
 
-My name is David, I came across a YouTube tool on Reddit that updated livestream thumbnails to the most recent frame based on a time interval similarly to how it is done on twitch.tv
+My name is David, I came across a YouTube based tool on Reddit that updated livestream thumbnails to the most recent frame based on a time interval similarly to how it is done on twitch.tv
 I wanted to update the program, unfortunately LiquidDegu the original developer hasn't been able to respond to my message to become a collaborator on the original GitHub repo, so I'll leave the updates I have made
 and possibly will keep making on this program here!
 
