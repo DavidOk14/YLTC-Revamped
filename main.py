@@ -48,9 +48,9 @@ def initialize_api(credentials_path):
 # Download The Current YouTube Livestream Frame
 def download_thumbnail(video_id):
     try:
-        # Use CamGear To Capture Current Frame Of Livestream
+        # Use CamGear to capture current frame of livestream
         capture_stream = CamGear(
-            source="https://youtu.be/" + video_id,  # YT URL
+            source="https://youtu.be/" + video_id,
             stream_mode=True,
             logging=True
         ).start()
@@ -61,8 +61,16 @@ def download_thumbnail(video_id):
         if thumbnail is None:
             display_error("Error Capturing YouTube Livestream for Thumbnail")
         else:
-            cv2.imwrite("thumbnail.png", thumbnail)
-            print("✅ Thumbnail Successfully Saved!")
+            # Resize to YouTube recommended size
+            resized_thumbnail = cv2.resize(thumbnail, (1280, 720))
+
+            # Compress to ensure file size is under 2MB
+            success = cv2.imwrite("thumbnail.png", resized_thumbnail, [cv2.IMWRITE_JPEG_QUALITY, 85])
+            if not success:
+                display_error("Failed to write thumbnail image.")
+            else:
+                print("✅ Thumbnail successfully saved under 2MB!")
+
         capture_stream.stop()
 
     except Exception as e:
